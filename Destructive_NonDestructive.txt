@@ -1,0 +1,55 @@
+Purpose : To learn dup method in strings.
+
+A method can have two versions. A Destructive one and other a non-destructive one.
+A Destructive method is one which goes ahead and performs the operations directly on the parameters passed to it, thus destroying the orignal parameter.  
+
+Eg: Consider a method like :  replace_space_with_dollar(text)
+    Passing a parameter like : text = "Mary has a little lamb."
+    and calling the function as : replace_space_with_dollar(text) will result in replacing the value of text.
+
+    So a :  print text would give an output : "Mary$has$a$little$lamb."
+    and eventually we have lost the orignal value of 'text'.
+
+    This is generally considered as a bad practise and Ruby expects the makers of these methods to inform others about this destruction by appending an exclamation sign(!) after the method name. This would atleast warn the users about the coming calamity.
+
+    So the function gets renamed as : replaced_space_with_dollar!
+
+
+   An alternative non-destructive function can be made which takes in a parameter but returns a changed value. i.e it does not work on the passed parameter, but creates a new one and makes changes on them.
+   Eg: 
+	inputText = "Mary has a little lamb."
+	outputText = replace_space_with_dollar(inputText) 
+	print 'inputText : ' + inputText
+	print 'outputText : ' + outputText
+
+   Result :
+	inputText : Mary has a little lamb.
+	outputText : Mary$has$a$little$lamb.
+
+
+So we have a destructive function : replace_space_with_dollar! and a normal one : replace_space_with_dollar.
+
+So let us try to make each of this.
+
+Two methods : wipe_mutterings_from!(sentence) and wipe_mutterings_from(sentence) [example from a beautiful book - why's poignant guide to Ruby]
+The method is supposed to remove the words in appearing insode brackets.
+Eg 1: 
+   sentence = 'Hello (Dear) Friend.'
+   wipe_mutterings_from!(sentence)
+   print sentence
+
+   Output
+   ------
+   Hello Friend.			
+
+Eg 2:   
+   sentence = 'Hello (Dear) Friend.'
+   wipedSentence = wipe_mutterings_from!(sentence)
+   print sentence
+   print wipedSentence
+
+   Output
+   ------
+   Hello (Dear) Friend.	
+   Hello Friend.	
+	
